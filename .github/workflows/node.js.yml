@@ -55,13 +55,9 @@ jobs:
       run: |
         ls -lh src/
         echo 'src'
-        ls -lh src/saveBox/
-        echo 'src/saveBox'
-        ls -lh src/saveBox/Cordova/
-        echo 'src/saveBox/Cordova'
-        ls -lh src/saveBox/Cordova/wwwroot/
-        echo 'src/saveBox/Cordova/wwwroot'
-        # rm -r src/saveBox/Cordova/wwwroot/*
+        ls -lh src/saveBox/Cordova/MyApplication/www/
+        rm src/saveBox/Cordova/MyApplication/www/angular.html
+        ls -lh src/saveBox/Cordova/MyApplication/www/
         mv src/saveBox/dist/saveBox/index.html src/saveBox/dist/saveBox/angular.html
         cp -r src/saveBox/dist/saveBox/* src/saveBox/Cordova/MyApplication/www/
         ls -lh src/saveBox/Cordova/MyApplication/www/
