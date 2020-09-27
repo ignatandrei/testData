@@ -25,12 +25,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install -g @angular/cli@10.0.4
     - name: build Angular
-      uses: |
+      run: |
         cd src
         cd saveBox
         npm i
         ng build --prod
     - name : copy new files
-      uses: |
+      run: |
         ls -lh src/saveBox/dist
         
