@@ -1,12 +1,8 @@
-enum Types {
-    Type1 = 1,
-    Type2,
-    Type3,
-    Type4
-  }
-
+import { Types } from './Types';
 export class ScanData{
-    
+    constructor(){
+        this.typeScan = Types.Type1;
+    }
     public platz: string;
     public box: string;
     public typeScan: Types;

@@ -1,2 +1,32 @@
+<table>
+  <tr>
+    <td>
+      <input matInput [(ngModel)]="sc.platz"  />
+    </td>
+    <td><button mat-raised-button color="primary" (click)="scanPlatz()">Scan platz</button></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <mat-radio-group [(ngModel)]="sc.typeScan">
+        <ng-template ngFor let-t [ngForOf]="idTypes">
+          <mat-card>
+            <mat-card-content>
+              <mat-radio-button class="example-margin" value="{{ t.id }}">
+                {{ t.name }}
+              </mat-radio-button>
+            </mat-card-content>
+          </mat-card>
+          <mat-divider></mat-divider>
+        </ng-template>
+      </mat-radio-group>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input matInput [(ngModel)]="sc.box" />
+    </td>
+    <td><button mat-raised-button color="primary"  (click)="scanBox()">Scan Box</button></td>
+  </tr>
+</table>
 
-<button mat-button color="primary">Scan platz </button>
+{{ sc | json }}
