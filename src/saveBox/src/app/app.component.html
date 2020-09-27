@@ -11,7 +11,7 @@
         <ng-template ngFor let-t [ngForOf]="idTypes">
           <mat-card>
             <mat-card-content>
-              <mat-radio-button class="example-margin" value="{{ t.id }}">
+              <mat-radio-button  class="example-margin" value="{{ t.id }}">
                 {{ t.name }}
               </mat-radio-button>
             </mat-card-content>
@@ -29,4 +29,23 @@
   </tr>
 </table>
 
+<mat-divider></mat-divider>
+
+Current Item - not saved yet
 {{ sc | json }}
+
+<button mat-raised-button color="primary"    (click)="saveData()">Save Current Item</button>
+<mat-divider></mat-divider>
+
+<span matBadge="{{scExist.length}}" matBadgeOverlap="false">Items scanned</span>
+
+<ol type="1">
+  <ng-template ngFor let-t [ngForOf]="scExist">
+  <li>
+      {{t | json}}
+      <button mat-raised-button color="warn" (click) = "deleteFromMemory(t)">Delete</button>
+  </li>
+  </ng-template>  
+</ol>
+
+

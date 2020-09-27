@@ -9,6 +9,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatRadioModule} from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -26,6 +28,8 @@ import { FormsModule } from '@angular/forms';
     MatRadioModule,
     MatCardModule,
     MatDividerModule,
+    MatBadgeModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
