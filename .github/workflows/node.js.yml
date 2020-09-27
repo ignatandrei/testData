@@ -53,8 +53,22 @@ jobs:
     
     - name : copy to cordova
       run: |
-        ls -lh src/saveBox/Cordova
-        rm -r src/saveBox/Cordova/*
-        cp -r src/saveBox/dist/saveBox/* src/saveBox/Cordova/
-        ls -lh src/saveBox/Cordova
+        ls -lh src/saveBox/Cordova/wwwroot/
+        rm -r src/saveBox/Cordova/wwwroot/*
+        cp -r src/saveBox/dist/saveBox/* src/saveBox/Cordova/wwwroot/
+        ls -lh src/saveBox/Cordova/wwwroot/
+    
+    - name: Build cordova
+      shell: pwsh
+      run: |
+        Push-Location $currentDir/src/saveBox/Cordova/
+         &"docker" build  -f cordova.txt -t  cordovaimage .
+         &"docker" run -d  --name cordovacontainer --rm cordovaimage
+         &"docker" cp cordovacontainer:/app/out  $currentDir/out/cordovaimage
+         &"docker" container kill cordovacontainer
         
+    - name: artifacts      
+      uses: actions/upload-artifact@v2
+      with:
+        name: exe ${{ env.GITHUB_REF_SLUG  }}
+        path: out
