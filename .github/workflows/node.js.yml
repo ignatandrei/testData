@@ -32,5 +32,8 @@ jobs:
         ng build --prod
     - name : copy new files
       run: |
-        ls -lh src/saveBox/dist
+        ls -lh src/saveBox/dist/saveBox/
+        rm docs/*
+        cp src/saveBox/dist/saveBox/* docs/
+        ls -lh src/saveBox/dist/saveBox/
         
