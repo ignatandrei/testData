@@ -31,4 +31,5 @@ jobs:
         cd src
         cd saveBox
         npm i
-    - run: npm build --prod
+        npm build --prod
+    - run: ls -lh src/saveBox/dist
