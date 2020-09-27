@@ -33,7 +33,7 @@ jobs:
     - name : copy new files
       run: |
         ls -lh src/saveBox/dist/saveBox/
-        rm docs/*
-        cp src/saveBox/dist/saveBox/* docs/
+        rm -r docs/*
+        cp -r src/saveBox/dist/saveBox/* docs/
         ls -lh src/saveBox/dist/saveBox/
         
