@@ -68,14 +68,21 @@ jobs:
     - name: Build cordova
       shell: pwsh
       run: |
+        $currentDir = (Get-Item .).FullName
+        Write-Host $currentDir
+        mkdir $currentDir/out
         Write-Host $currentDir
         dir $currentDir
-        cd src/saveBox/Cordova/
+        Push-Location $currentDir/src/saveBox/Cordova/
         &"docker" build  -f cordova.txt -t  cordovaimage .
         &"docker" run -d  --name cordovacontainer --rm cordovaimage
-        &"docker" cp cordovacontainer:/app/out  $currentDir/out/cordovaimage
+        &"docker" cp cordovacontainer:/app/out  $currentDir/out/
         &"docker" container kill cordovacontainer
-        
+        Pop-Location 
+    - name : verify apk
+      run: |
+        ls -lh out/
+           
     - name: artifacts      
       uses: actions/upload-artifact@v2
       with:
