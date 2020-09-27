@@ -53,7 +53,14 @@ jobs:
     
     - name : copy to cordova
       run: |
+        ls -lh src/
+        echo 'src'
+        ls -lh src/saveBox/
+        echo 'src/saveBox'
+        ls -lh src/saveBox/Cordova/
+        echo 'src/saveBox/Cordova'
         ls -lh src/saveBox/Cordova/wwwroot/
+        echo 'src/saveBox/Cordova/wwwroot'
         rm -r src/saveBox/Cordova/wwwroot/*
         cp -r src/saveBox/dist/saveBox/* src/saveBox/Cordova/wwwroot/
         ls -lh src/saveBox/Cordova/wwwroot/
