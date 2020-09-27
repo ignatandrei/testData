@@ -44,9 +44,17 @@ jobs:
         git config --local user.name "GitHub Action"
         git add --all
         git commit -m "adding new data" -a --allow-empty
-          
+  
+                  
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name : copy to cordova
+      run: |
+        ls -lh src/saveBox/Cordova
+        rm -r src/saveBox/Cordova/*
+        cp -r src/saveBox/dist/saveBox/* src/saveBox/Cordova/
+        ls -lh src/saveBox/Cordova
         
