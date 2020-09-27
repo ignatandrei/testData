@@ -13,7 +13,8 @@ COPY MyApplication/www/js/ MyApplication/www/js/
 COPY MyApplication/www/img/ MyApplication/www/img/
 
 
-RUN cd MyApplication && cordova platform add android
+# RUN cd MyApplication && cordova platform add android
+RUN cd MyApplication && cordova platform add android@6.4.0
 
 RUN cd MyApplication && cordova requirements
 
