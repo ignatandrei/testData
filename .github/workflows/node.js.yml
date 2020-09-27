@@ -37,3 +37,16 @@ jobs:
         cp -r src/saveBox/dist/saveBox/* docs/
         ls -lh src/saveBox/dist/saveBox/
         
+        
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add --all
+        git commit -m "adding new data" -a --allow-empty
+          
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        
