@@ -61,7 +61,7 @@ jobs:
         echo 'src/saveBox/Cordova'
         ls -lh src/saveBox/Cordova/wwwroot/
         echo 'src/saveBox/Cordova/wwwroot'
-        rm -r src/saveBox/Cordova/wwwroot/*
+        # rm -r src/saveBox/Cordova/wwwroot/*
         cp -r src/saveBox/dist/saveBox/* src/saveBox/Cordova/wwwroot/
         ls -lh src/saveBox/Cordova/wwwroot/
     
