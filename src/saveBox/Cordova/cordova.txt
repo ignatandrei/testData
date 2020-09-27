@@ -23,5 +23,7 @@ RUN cd MyApplication &&   cordova build android
 
 RUN mkdir /app/out
 
-RUN cp /app/MyApplication/platforms/android/app/build/outputs/apk/debug/app-debug.apk /app/out/myapp.apk
+#RUN cp /app/MyApplication/platforms/android/app/build/outputs/apk/debug/app-debug.apk /app/out/myapp.apk
+#for 6.4.0
+RUN cp /app/MyApplication/platforms/android/build/outputs/apk/debug/android-debug.apk /app/out/myapp.apk
 CMD tail -f /dev/null
