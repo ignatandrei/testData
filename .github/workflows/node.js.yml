@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Angular Cordova
 
 on:
   push:
@@ -68,11 +68,13 @@ jobs:
     - name: Build cordova
       shell: pwsh
       run: |
-        Push-Location $currentDir/src/saveBox/Cordova/
-         &"docker" build  -f cordova.txt -t  cordovaimage .
-         &"docker" run -d  --name cordovacontainer --rm cordovaimage
-         &"docker" cp cordovacontainer:/app/out  $currentDir/out/cordovaimage
-         &"docker" container kill cordovacontainer
+        Write-Host $currentDir
+        dir $currentDir
+        cd src/saveBox/Cordova/
+        &"docker" build  -f cordova.txt -t  cordovaimage .
+        &"docker" run -d  --name cordovacontainer --rm cordovaimage
+        &"docker" cp cordovacontainer:/app/out  $currentDir/out/cordovaimage
+        &"docker" container kill cordovacontainer
         
     - name: artifacts      
       uses: actions/upload-artifact@v2
