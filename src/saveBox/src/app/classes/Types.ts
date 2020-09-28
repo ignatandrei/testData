@@ -1,6 +1,10 @@
 export enum Types {
-    Type1 = 1,
-    Type2,
-    Type3,
-    Type4
+    Maxi = 1,
+    Medi,
+    Mini,
+    U-I,
+    U-II,
+    U-III,
+    PN,
+    Unbekannt
 }
