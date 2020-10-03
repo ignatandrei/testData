@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
 import { BehaviorSubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { RecognizeBarCodeService } from '../recognize-bar-code.service';
 
 
 @Component({
@@ -39,8 +40,9 @@ export class TheScannerComponent implements OnInit {
   }
 
   onCodeResult(resultString: string) {
-    window.alert('qr: ' + resultString);
+    //window.alert('qr: ' + resultString);
     this.qrResultString = resultString;
+    this.recog.findBar(resultString);
   }
 
   get currentDeviceId(): string{
@@ -94,7 +96,7 @@ export class TheScannerComponent implements OnInit {
     this.tryHarder = !this.tryHarder;
   }
   //#endregion
-  constructor(private readonly _dialog: MatDialog) { }
+  constructor(private readonly _dialog: MatDialog, private recog : RecognizeBarCodeService) { }
 
   ngOnInit(): void {
   }

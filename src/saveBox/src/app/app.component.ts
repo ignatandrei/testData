@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IDName } from './classes/IDName';
 import { ScanData } from './classes/scan';
+import { StateScanning } from './classes/StateScanning';
 import { Types } from './classes/Types';
+import { RecognizeBarCodeService } from './recognize-bar-code.service';
 import { StorageService } from './services/StorageService';
 @Component({
   selector: 'app-root',
@@ -13,11 +15,12 @@ import { StorageService } from './services/StorageService';
 export class AppComponent {
 
 
+  public state: StateScanning = StateScanning.None;
   public sc: ScanData;
   public scExist: ScanData[] = [];
   idTypes: IDName[] = [];
   title = 'The application for save box data';
-  constructor(private st: StorageService, private  snackBar: MatSnackBar) {
+  constructor(private st: StorageService, private  snackBar: MatSnackBar, private recog : RecognizeBarCodeService) {
     this.sc = new ScanData();
 
     for (const n in Types) {
@@ -25,14 +28,30 @@ export class AppComponent {
         this.idTypes.push(new IDName(parseInt(Types[n], 10), n));
       }
     }
+
+    recog.FindBar$().subscribe(it=> this.findBarCode(it));
   }
+  public findBarCode(s: string){
+    switch(this.state){
+      case StateScanning.None:
+        break;
+      case StateScanning.Box:
+        this.sc.box = s;
+        this.state = StateScanning.None;
+        break;
+      case StateScanning.Platz:
+        this.sc.platz = s;
+        this.state = StateScanning.None;
+        break;
+    }
+  }
+  
   public scanBox(): void{
-    // const b = this.sc.box;
-    // this.saveMemory();
-    // this.sc.box = b;
+
+    this.state=StateScanning.Box;
   }
   public scanPlatz(): void{    
-    // this.saveMemory();
+    this.state=StateScanning.Platz;
   }
   private saveMemory(): void{
     if(!this.sc.isValid){

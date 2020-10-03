@@ -1,9 +1,10 @@
+<div *ngIf="state != 0">
 
 <app-the-scanner></app-the-scanner>
 
-
-
-<table>
+</div>
+<div *ngIf="state == 0">
+<table >
   <tr>
     <td>
       <input matInput [(ngModel)]="sc.platz"  />
@@ -54,3 +55,4 @@ Current Item - not saved yet
 </ol>
 
 
+</div>

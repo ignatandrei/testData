@@ -8,3 +8,4 @@ export enum Types {
     PN,
     Unbekannt
 }
+
