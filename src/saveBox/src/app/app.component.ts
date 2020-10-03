@@ -5,13 +5,13 @@ import { IDName } from './classes/IDName';
 import { ScanData } from './classes/scan';
 import { Types } from './classes/Types';
 import { StorageService } from './services/StorageService';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+
 
   public sc: ScanData;
   public scExist: ScanData[] = [];
