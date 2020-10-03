@@ -14,7 +14,13 @@
       <button mat-menu-item (click)="openFormatsDialog()" *ngIf="false" >Barcode formats</button>
       <button mat-menu-item (click)="openInfoDialog()" *ngIf="false">App info</button>
     </mat-menu>
-  
+    <section class="results" >
+      <div>
+        <small>Result</small>
+        <strong>{{ qrResultString }}</strong>
+      </div>
+      <button mat-icon-button (click)="clearResult()">&times;</button>
+    </section>
     <header>
       <mat-form-field appearance="fill">
         <select matNativeControl matInput (change)="onDeviceSelectChange($event.target.value)" >
@@ -32,13 +38,7 @@
       [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
       (camerasFound)="onCamerasFound($event)" (torchCompatible)="onTorchCompatible($event)"></zxing-scanner>
   
-    <section class="results" *ngIf="qrResultString">
-      <div>
-        <small>Result</small>
-        <strong>{{ qrResultString }}</strong>
-      </div>
-      <button mat-icon-button (click)="clearResult()">&times;</button>
-    </section>
+   
   
   </div>
   
