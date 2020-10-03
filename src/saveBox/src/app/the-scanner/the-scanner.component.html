@@ -17,8 +17,8 @@
   
     <header>
       <mat-form-field appearance="fill">
-        <select matNativeControl matInput (change)="onDeviceSelectChange($event.target.value)">
-          <option value="" [selected]="!currentDevice">No Device Selected</option>
+        <select matNativeControl matInput (change)="onDeviceSelectChange($event.target.value)" >
+          <option value="" [selected]="!currentDevice" *ngIf="!hasDevices">No Device Selected</option>
           <option *ngFor="let device of availableDevices" [value]="device.deviceId"
             [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{device.label}}</option>
         </select>

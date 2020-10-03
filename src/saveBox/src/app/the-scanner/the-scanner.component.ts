@@ -11,10 +11,11 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class TheScannerComponent implements OnInit {
 
-  
+
   //#region barcode scanner
   availableDevices: MediaDeviceInfo[];
   currentDevice: MediaDeviceInfo = null;
+
   formatsEnabled: BarcodeFormat[] = [
     BarcodeFormat.CODE_128,
     BarcodeFormat.DATA_MATRIX,
@@ -42,16 +43,26 @@ export class TheScannerComponent implements OnInit {
     this.qrResultString = resultString;
   }
 
+  get currentDeviceId(): string{
+
+    if (this.currentDevice == null) {
+        return 'no_device';
+    }
+
+    return this.currentDevice.deviceId;
+
+  }
   onDeviceSelectChange(selected: string) {
     const device = this.availableDevices.find(x => x.deviceId === selected);
     this.currentDevice = device || null;
+    window.alert('change camera to ' + this.currentDevice.label);
   }
 
   openFormatsDialog() {
     const data = {
       formatsEnabled: this.formatsEnabled,
     };
-    window.alert('not ready yet, https://github.com/zxing-js/ngx-scanner/blob/6f8d3954ea39a3adbc17f0f5f02c6bdbff95416d/projects/zxing-scanner-demo/src/app/app.component.ts')
+    window.alert('not ready yet, https://github.com/zxing-js/ngx-scanner/blob/6f8d3954ea39a3adbc17f0f5f02c6bdbff95416d/projects/zxing-scanner-demo/src/app/app.component.ts');
     // this._dialog
     //   .open(FormatsDialogComponent, { data })
     //   .afterClosed()
@@ -68,7 +79,7 @@ export class TheScannerComponent implements OnInit {
       hasPermission: this.hasPermission,
     };
     window.alert('not ready yet');
-    //this._dialog.open(AppInfoDialogComponent, { data });
+    // this._dialog.open(AppInfoDialogComponent, { data });
   }
 
   onTorchCompatible(isCompatible: boolean): void {
