@@ -40,7 +40,7 @@ export class TheScannerComponent implements OnInit {
   }
 
   onCodeResult(resultString: string) {
-    //window.alert('qr: ' + resultString);
+    // window.alert('qr: ' + resultString);
     this.qrResultString = resultString;
     this.recog.findBar(resultString);
   }
@@ -55,11 +55,16 @@ export class TheScannerComponent implements OnInit {
 
   }
   onDeviceSelectChange(selected: string) {
+    const prev = this.currentDeviceId;
     const device = this.availableDevices.find(x => x.deviceId === selected);
     this.currentDevice = device || null;
-    window.alert('change camera to ' + this.currentDevice.label);
+    if (prev !== this.currentDeviceId) {
+      window.alert('change camera to ' + this.currentDevice.label);
+    }
   }
-
+  cancelCamera(){
+    this.recog.findBar('');
+  }
   openFormatsDialog() {
     const data = {
       formatsEnabled: this.formatsEnabled,
@@ -94,9 +99,10 @@ export class TheScannerComponent implements OnInit {
 
   toggleTryHarder(): void {
     this.tryHarder = !this.tryHarder;
+    this.onDeviceSelectChange(this.currentDeviceId);
   }
   //#endregion
-  constructor(private readonly _dialog: MatDialog, private recog : RecognizeBarCodeService) { }
+  constructor(private readonly _dialog: MatDialog, private recog: RecognizeBarCodeService) { }
 
   ngOnInit(): void {
   }
