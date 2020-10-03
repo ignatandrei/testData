@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { StreamPriorityOptions } from 'http2';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
