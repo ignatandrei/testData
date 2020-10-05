@@ -18,10 +18,9 @@ export class TheScannerComponent implements OnInit {
   currentDevice: MediaDeviceInfo = null;
 
   formatsEnabled: BarcodeFormat[] = [
-    BarcodeFormat.CODE_128,
-    BarcodeFormat.DATA_MATRIX,
+    BarcodeFormat.CODE_39,
     BarcodeFormat.EAN_13,
-    BarcodeFormat.QR_CODE,
+    BarcodeFormat.QR_CODE
   ];
   hasDevices: boolean;
   hasPermission: boolean;
